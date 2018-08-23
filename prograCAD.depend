@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1535003308 source:c:\users\rreyes\documents\ceutec\ccc208 programacion iii\progracad\main.cpp
+	<iostream>
+	"Figuras.h"
+	<winbgim.h>
+
+1535003261 c:\users\rreyes\documents\ceutec\ccc208 programacion iii\progracad\figuras.h
+	<iostream>
+
+1535003230 source:c:\users\rreyes\documents\ceutec\ccc208 programacion iii\progracad\figuras.cpp
+	"Figuras.h"
+	<math.h>
+	<iostream>
+	<winbgim.h>
+
