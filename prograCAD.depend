@@ -13,3 +13,18 @@
 	<iostream>
 	<winbgim.h>
 
+1535696007 source:c:\users\rreyes\documents\ceutec\ccc208 programacion iii\github\progracad\main.cpp
+	<iostream>
+	"Figuras.h"
+	<winbgim.h>
+
+1535698784 c:\users\rreyes\documents\ceutec\ccc208 programacion iii\github\progracad\figuras.h
+	<iostream>
+	<winbgim.h>
+
+1535698784 source:c:\users\rreyes\documents\ceutec\ccc208 programacion iii\github\progracad\figuras.cpp
+	"Figuras.h"
+	<math.h>
+	<iostream>
+	<winbgim.h>
+

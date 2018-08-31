@@ -1,60 +1,135 @@
 #include <iostream>
-class FigurasGeometricas{
+#include <winbgim.h>
+
+class FigurasGeometrica{
     public:
         virtual void  dibujar()=0;
 };
-class Figuras2D : public FigurasGeometricas{
-    public:
-        virtual double area()      = 0;
-        virtual double perimetro() = 0;
-};
-class Punto: public FigurasGeometricas{
-    protected:
-        int x, y;
-    public:
-             Punto(int x = 0, int y = 0);
-             Punto(Punto&);
-            ~Punto();
-        void dibujar(void);
-        int  X();
-        int  Y();
-        void X(int);
-        void Y(int);
-        Punto & operator=(Punto& otroPunto);
-};
-class Punto3D: public Punto{
+
+//╔═══════════════════════════════════════════════════════════════════════════╗
+//║ FigurasGeometrica                                                        ║
+//║  │                                                                        ║
+//║  ├─[Punto]                                                                ║
+//║ ...   │                                                                   ║
+//║      ...                                                                  ║
+//╚═══════════════════════════════════════════════════════════════════════════╝
+
+//════════════════════════════════════════════════════════════════════════════╗
+    class Punto : public FigurasGeometrica{                                //║
+                                                                            //║
+        protected:                                                          //║
+                    int x, y, color;                                        //║
+        public:                                                             //║
+                    // CONSTRUCTORES Y DESTRUCTOR                           //║
+                    Punto(int x = 0, int y = 0, int color = WHITE);         //║
+                    Punto(Punto&);                                          //║
+                   ~Punto();                                                //║
+                                                                            //║
+                    // METODOS HEREDADOS                                    //║
+                    void dibujar(void);                                     //║
+                                                                            //║
+                    // GETTERS & SETTERS                                    //║
+                int X();     int Y();                                       //║
+               void X(int); void Y(int);                                    //║
+               void COLOR(int);                                             //║
+                                                                            //║
+                    // SOBRECARGA DE OPERADORES                             //║
+             Punto& operator = (Punto& P);                                  //║
+                                                                            //║
+                    // UTILITARIOS                                          //║
+             double distancia(Punto& p);                                    //║
+};                                                                          //║
+//════════════════════════════════════════════════════════════════════════════╝
+
+
+//╔═══════════════════════════════════════════════════════════════════════════╗
+//║ FigurasGeometrica                                                        ║
+//║  │                                                                        ║
+//║  ├─Punto                                                                  ║
+//║ ... ├─[Plano]                                                             ║
+//║    ...                                                                    ║
+//╚═══════════════════════════════════════════════════════════════════════════╝
+
+//════════════════════════════════════════════════════════════════════════════╗
+    class Plano: public Punto{                                              //║
+                                                                            //║
+        private:                                                            //║
+                float escala;                                               //║
+                int unidades;                                               //║
+        public:                                                             //║
+                 // CONSTRUCTOR Y DESTRUCOR                                 //║
+                 Plano(  Punto& Centro,                                     //║
+                         float escala = 50,                                 //║
+                           int unidad =  1,                                 //║
+                           int color  = WHITE);                             //║
+                                                                            //║
+                 // METODOS HEREDADOS                                       //║
+            void dibujar();                                                 //║
+};                                                                          //║
+//════════════════════════════════════════════════════════════════════════════╝
+
+  class Punto3D : public Punto{
+
     private:
-        int z;
+
+            int z;
+
     public:
-        Punto3D(int x = 0, int = 0, int = 0);
+
+            Punto3D( int x = 0, int = 0, int = 0);
+           ~Punto3D();
         int Z();
-        void Z(int);
-};
-class Recta: public FigurasGeometricas{
-    protected:
-        Punto Centro;
-    public:
-        void Centrar(Punto& OtroPunto);
-};
-class RectaVertical: public Recta{
-    private:
-        int x;
-    public:
-          RectaVertical(int x = 0);
-     void dibujar();
-};
-class RectaHorizontal: public Recta{
-    private:
-        int y;
-    public:
-          RectaHorizontal(int y = 0);
-     void dibujar();
+       void Z(int);
+
 };
 
+//════════════════════════════════════════════════════════════════════════════╗
+  class Figura2D : public FigurasGeometrica{                               //║
+                                                                            //║
+    public:                                                                 //║
+                                                                            //║
+        virtual double area()      = 0;                                     //║
+        virtual double perimetro() = 0;                                     //║
+                                                                            //║
+};                                                                          //║
+//════════════════════════════════════════════════════════════════════════════╝
+
+
+class Recta : public FigurasGeometrica{
+
+    protected:
+
+        int m, b, color;
+
+    public:
+
+            Recta(int m = 0 , int b = 0  , int color = WHITE);
+
+        int M();
+        int B();
+       void M(int m);
+       void B(int b);
+        int Y(int x);
+       void dibujar();
+
+};
+
+class Segmento : public Recta {
+
+    private:
+
+        Punto I;
+        Punto F;
+
+    public:
+
+        Segmento( Punto , Punto , int color);
+        void dibujar();
+};
 
 class Circulo:
         public Punto,
-        public Figuras2D{
+        public Figura2D{
     private:
         double r;
     public:
@@ -87,7 +162,7 @@ class Ventana{
                 int alto  = 400,
                 int izquierda      = 0,
                 int arriba         = 0,
-                std::string titulo = "Sin t�tulo");
+                std::string titulo = "Sin título");
         void activar(void);
         void centroRelativo(Punto &);
         void desactivar(void);
