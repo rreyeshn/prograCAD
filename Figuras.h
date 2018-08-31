@@ -7,7 +7,7 @@ class FigurasGeometrica{
 };
 
 //╔═══════════════════════════════════════════════════════════════════════════╗
-//║ FigurasGeometrica                                                        ║
+//║ FigurasGeometrica                                                         ║
 //║  │                                                                        ║
 //║  ├─[Punto]                                                                ║
 //║ ...   │                                                                   ║
@@ -15,7 +15,7 @@ class FigurasGeometrica{
 //╚═══════════════════════════════════════════════════════════════════════════╝
 
 //════════════════════════════════════════════════════════════════════════════╗
-    class Punto : public FigurasGeometrica{                                //║
+    class Punto : public FigurasGeometrica{                                 //║
                                                                             //║
         protected:                                                          //║
                     int x, y, color;                                        //║
@@ -43,7 +43,7 @@ class FigurasGeometrica{
 
 
 //╔═══════════════════════════════════════════════════════════════════════════╗
-//║ FigurasGeometrica                                                        ║
+//║ FigurasGeometrica                                                         ║
 //║  │                                                                        ║
 //║  ├─Punto                                                                  ║
 //║ ... ├─[Plano]                                                             ║
@@ -84,7 +84,7 @@ class FigurasGeometrica{
 };
 
 //════════════════════════════════════════════════════════════════════════════╗
-  class Figura2D : public FigurasGeometrica{                               //║
+  class Figura2D : public FigurasGeometrica{                                //║
                                                                             //║
     public:                                                                 //║
                                                                             //║
